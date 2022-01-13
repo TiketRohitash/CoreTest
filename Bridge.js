@@ -1,8 +1,8 @@
 function AppDetailsBridge(){
     window.addEventListener('onAppDetailsReceived', (event, data) => {
-        response = event.detail;
-        console.log(response);
-        document.getElementById("output").innerHTML = JSON.stringify(response,null,2);
+        AppDetailresponse = event.detail;
+        console.log(AppDetailresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(AppDetailresponse,null,2);
     });
     try {
         if (window.webkit) {
@@ -17,9 +17,9 @@ function AppDetailsBridge(){
 
 function AuthenticationBridge(){
     window.addEventListener('onAuthenticationDetailsReceived', (event, data) => {
-        response = event.detail;
-        console.log(response);
-        document.getElementById("output").innerHTML = JSON.stringify(response,null,2);
+        Authresponse = event.detail;
+        console.log(Authresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(Authresponse,null,2);
     });
     try {
         if (window.webkit) {
