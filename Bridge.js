@@ -1,4 +1,4 @@
-function AppDetailsBridge(){
+function chalu(){
     window.addEventListener('onAppDetailsReceived', (event, data) => {
         console.log(event.detail);
     });
@@ -14,21 +14,21 @@ function AppDetailsBridge(){
     }
 }
 
-function AuthenticationBridge(){
-    window.addEventListener('onAuthenticationDetailsReceived', (event, data) => {
-        console.log(event.detail);
-    });
-    try {
-        if (window.webkit) {
-            window?.webkit?.messageHandlers?.getUserAuthenticationDetails?.postMessage?.(null)
-        } else {
-            window?.native?.getUserAuthenticationDetails()
-        }
-    } catch(e) {
-        document.getElementById("output").innerHTML = e
-        console.log(e);
-    }
-}
-// function AppDetailsBridge(){
-//     alert("yellow!")
+// function AuthenticationBridge(){
+//     window.addEventListener('onAuthenticationDetailsReceived', (event, data) => {
+//         console.log(event.detail);
+//     });
+//     try {
+//         if (window.webkit) {
+//             window?.webkit?.messageHandlers?.getUserAuthenticationDetails?.postMessage?.(null)
+//         } else {
+//             window?.native?.getUserAuthenticationDetails()
+//         }
+//     } catch(e) {
+//         document.getElementById("output").innerHTML = e
+//         console.log(e);
+//     }
 // }
+function AppDetailsBridge(){
+    alert("yellow!")
+}
