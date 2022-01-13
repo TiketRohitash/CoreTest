@@ -1,3 +1,9 @@
+function timer(){
+    var Start = new Date().getTime();
+    AppDetailsBridge()
+    var Elapsed = new Date().getTime() - Start;
+    console.log(Elapsed);
+}
 function AppDetailsBridge(){
     var AppDetailBridgeTimeStart = new Date().getTime();
     window.addEventListener('onAppDetailsReceived', (event, data) => {
