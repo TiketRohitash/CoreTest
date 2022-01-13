@@ -9,11 +9,19 @@
 
   <body>
     <div class="container">
-        <h3>Select Bridge</h3>
+      <h4>Available Bridges</h4>
         <a onclick="AppDetailsBridge()" class="btn btn-lg btn-primary text-light" id="AppDetails" role="button">AppDetails &raquo;</a>
         <a onclick="AuthenticationBridge()" class="btn btn-lg btn-primary text-light" id="Authentication" role="button">Authentication &raquo;</a>
       </div>
     <div class="container h-100 d-inline-block mt-3">
+      <div class="row h-100 d-inline-block mt-3 col-md-1">
+        <h4>DOM Time</h4><br>
+        <p class="mt-1 h-100 d-inline-block col-md-1" id="domtime"></p>
+      </div>
+      <div class="row h-100 d-inline-block mt-3 col-md-1">
+        <h4>Time to call</h4><br>
+        <p class="mt-1 h-100 d-inline-block col-md-1" id="ttl"></p>
+      </div>
       <div class="row h-100 d-inline-block mt-3 col-md-1">
       <h4>Callback</h4><br>
       <p class="mt-1 h-100 d-inline-block col-md-1" id="output"></p>
