@@ -20,7 +20,7 @@ function AppDetailsBridge(){
 
 function AuthenticationBridge(){
     var AuthenticationBridgeTimeStart = new Date().getTime();
-    window.addEventListener('onAuthenticationDetailsReceived', (event, data) => {
+    window.addEventListener('onUserAuthenticationDetailsReceived', (event, data) => {
         Authresponse = event.detail;
         var AuthenticationBridgeTimeElapsed = new Date().getTime() - AuthenticationBridgeTimeStart;
         console.log(Authresponse);
