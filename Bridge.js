@@ -47,7 +47,7 @@ function AuthenticationBridge(){
 function logWebApiIOS(){
     alert("yellow!")
     var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"page=2","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
-    window.webkit.messageHandlers.logWebApi.postMessage(ResponseJSON)
+    window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(ResponseJSON)
 }
 
 function logWebApiIOSNew(){
@@ -58,10 +58,12 @@ function logWebApiIOSNew(){
         console.log(Authresponse);
         document.getElementById("output").innerHTML = JSON.stringify("Authresponse",null,2);
         document.getElementById("ttl").innerHTML = LogWebTimeElapsed;
+        var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"page=2","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
+
     });
     try {
         if (window.webkit) {
-            window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(null)
+            window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(ResponseJSON)
         } else {
             window?.native?.logWebApi()
         }
