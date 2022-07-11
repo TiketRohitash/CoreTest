@@ -46,7 +46,8 @@ function AuthenticationBridge(){
 
 function logWebApiIOS(){
     alert("yellow!")
-    window.webkit.messageHandlers.logWebApi.postMessage("{\"uri\":\"https://reqres.in/api/users\",\"query\":\"page=2\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
+    var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"page=2","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
+    window.webkit.messageHandlers.logWebApi.postMessage(ResponseJSON)
 }
 
 // function AppDetailsBridge(){
