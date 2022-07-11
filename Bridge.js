@@ -43,6 +43,14 @@ function AuthenticationBridge(){
         console.log(e);
     }
 }
+
+function logWebApiIOS(){
+    alert("yellow!")
+    window.webkit.messageHandlers.logWebApi.postMessage("{\"uri\":\"https://reqres.in/api/users\",\"query\":\"page=2\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
+}
+
 // function AppDetailsBridge(){
 //     alert("yellow!")
-// }
+// }logWebApiIOS
+
+// window?.webkit?.messageHandlers?.logWebApi?.postMessage?.("{\"uri\":\"https://mockable.tiket.com/rest\",\"query\":\"some_query=some_value\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
