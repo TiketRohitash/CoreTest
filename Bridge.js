@@ -50,6 +50,26 @@ function logWebApiIOS(){
     window.webkit.messageHandlers.logWebApi.postMessage(ResponseJSON)
 }
 
+function logWebApiIOSNew(){
+    var logWebTimeStart = new Date().getTime();
+    window.addEventListener('onUserAuthenticationDetailsReceived', (event, data) => {
+        Authresponse = event.detail;
+        var LogWebTimeElapsed = new Date().getTime() - logWebTimeStart;
+        console.log(Authresponse);
+        document.getElementById("output").innerHTML = JSON.stringify("Authresponse",null,2);
+        document.getElementById("ttl").innerHTML = LogWebTimeElapsed;
+    });
+    try {
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(null)
+        } else {
+            window?.native?.logWebApi()
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 // function AppDetailsBridge(){
 //     alert("yellow!")
 // }logWebApiIOS
