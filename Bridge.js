@@ -46,8 +46,8 @@ function AuthenticationBridge(){
 
 function logWebApiIOS(){
     alert("yellow!")
-    var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"page=2","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
-    window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(ResponseJSON)
+    var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
+    window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(JSON.stringify(ResponseJSON))
 }
 
 function logWebApiIOSNew(){
@@ -56,9 +56,9 @@ function logWebApiIOSNew(){
         Authresponse = event.detail;
         var LogWebTimeElapsed = new Date().getTime() - logWebTimeStart;
         console.log(Authresponse);
-        document.getElementById("output").innerHTML = JSON.stringify("Authresponse",null,2);
+        // document.getElementById("output").innerHTML = JSON.stringify("Authresponse",null,2);
         document.getElementById("ttl").innerHTML = LogWebTimeElapsed;
-        var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"page=2","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
+        var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
 
     });
     try {
