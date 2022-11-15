@@ -72,6 +72,28 @@ function logWebApiIOSNew(){
     }
 }
 
+
+function CallNativeJSIBridge(){
+    var CallNativeJSIBridgeTimeStart = new Date().getTime();
+    window.addEventListener('onAppDetailsReceived', (event, data) => {
+        CallNativeJSIBridgeresponse = event.detail;
+        var CallNativeJSIBridgeTimeElapsed = new Date().getTime() - CallNativeJSIBridgeTimeStart;
+        console.log(CallNativeJSIBridgeresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(CallNativeJSIBridgeresponse,null,2);
+        document.getElementById("ttl").innerHTML = CallNativeJSIBridgeTimeElapsed;
+    });
+    try {
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(null)
+        } else {
+            window?.native?.callNativeJSI("{\"command\":\"requestCamera\"}")
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+// window.native.callNativeJSI("{\"command\":\"requestCamera\"}")
 // function AppDetailsBridge(){
 //     alert("yellow!")
 // }logWebApiIOS
