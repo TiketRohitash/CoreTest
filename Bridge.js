@@ -75,7 +75,7 @@ function logWebApiIOSNew(){
 
 function CallNativeJSIBridge(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
-    window.addEventListener('onAppDetailsReceived', (event, data) => {
+    window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSIBridgeresponse = event.detail;
         var CallNativeJSIBridgeTimeElapsed = new Date().getTime() - CallNativeJSIBridgeTimeStart;
         console.log(CallNativeJSIBridgeresponse);
@@ -84,7 +84,7 @@ function CallNativeJSIBridge(){
     });
     try {
         if (window.webkit) {
-            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(null)
+            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(JSON.stringify(ResponseJSON))
         } else {
             window?.native?.callNativeJSI("{\"command\":\"requestCamera\"}")
         }
@@ -99,3 +99,16 @@ function CallNativeJSIBridge(){
 // }logWebApiIOS
 
 // window?.webkit?.messageHandlers?.logWebApi?.postMessage?.("{\"uri\":\"https://mockable.tiket.com/rest\",\"query\":\"some_query=some_value\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
+
+function CallNativeJSIBridgeNew(){
+    var ReqJSON = "{\"command\":\"requestCamera\"}"
+    try {
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.native?.callNativeJSI("{\"command\":\"requestCamera\"}")
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
