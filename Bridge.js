@@ -73,7 +73,7 @@ function logWebApiIOSNew(){
 }
 
 
-function CallNativeJSIBridge(){
+function CallNativeJSICamera(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSIBridgeresponse = event.detail;
@@ -83,10 +83,32 @@ function CallNativeJSIBridge(){
         document.getElementById("ttl").innerHTML = CallNativeJSIBridgeTimeElapsed;
     });
     try {
+        var ReqJSON = "{\"command\":\"requestCamera\"}"
         if (window.webkit) {
-            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(JSON.stringify(ResponseJSON))
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
-            window?.native?.callNativeJSI("{\"command\":\"requestCamera\"}")
+            window?.native?.callNativeJSI(ReqJSON)
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+function CallNativeJSILocation(){
+    var CallNativeJSILocationTimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        CallNativeJSILocationresponse = event.detail;
+        var CallNativeJSILocationTimeElapsed = new Date().getTime() - CallNativeJSILocationTimeStart;
+        console.log(CallNativeJSILocationresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(CallNativeJSILocationresponse,null,2);
+        document.getElementById("ttl").innerHTML = CallNativeJSILocationTimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"getLocation","request":{"isFineLocationRequired":true}}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.native?.callNativeJSI(JSON.stringify(ReqJSON))
         }
     } catch(e) {
         console.log(e);
@@ -99,16 +121,3 @@ function CallNativeJSIBridge(){
 // }logWebApiIOS
 
 // window?.webkit?.messageHandlers?.logWebApi?.postMessage?.("{\"uri\":\"https://mockable.tiket.com/rest\",\"query\":\"some_query=some_value\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
-
-function CallNativeJSIBridgeNew(){
-    var ReqJSON = "{\"command\":\"requestCamera\"}"
-    try {
-        if (window.webkit) {
-            window?.webkit?.messageHandlers?.getAppDetails?.postMessage?.(JSON.stringify(ReqJSON))
-        } else {
-            window?.native?.callNativeJSI("{\"command\":\"requestCamera\"}")
-        }
-    } catch(e) {
-        console.log(e);
-    }
-}
