@@ -115,6 +115,34 @@ function CallNativeJSILocation(){
     }
 }
 
+function CallNativeJSILocationFalse(){
+    var CallNativeJSILocationFalseTimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        CallNativeJSILocationFalseresponse = event.detail;
+        var CallNativeJSILocationFalseTimeElapsed = new Date().getTime() - CallNativeJSILocationFalseTimeStart;
+        console.log(CallNativeJSILocationFalseresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(CallNativeJSILocationFalseresponse,null,2);
+        document.getElementById("ttl").innerHTML = CallNativeJSILocationFalseTimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"getLocation","request":{"isFineLocationRequired":false}}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.native?.callNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+function NavigateToMoreJSIs(){
+    window.location.href("https://poc-web-common-actions.vercel.app")
+}
+
+
+// https://poc-web-common-actions.vercel.app/
+
 // window.native.callNativeJSI("{\"command\":\"requestCamera\"}")
 // function AppDetailsBridge(){
 //     alert("yellow!")
