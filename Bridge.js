@@ -45,7 +45,7 @@ function AuthenticationBridge(){
 }
 
 function logWebApiIOS(){
-    alert("yellow!")
+    // alert("yellow!")
     var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
     window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(JSON.stringify(ResponseJSON))
 }
