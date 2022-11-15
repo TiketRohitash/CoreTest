@@ -137,7 +137,7 @@ function CallNativeJSILocationFalse(){
 }
 
 function NavigateToMoreJSIs(){
-    window.location.href("https://poc-web-common-actions.vercel.app")
+    window.location.href="https://poc-web-common-actions.vercel.app"
 }
 
 
