@@ -1,6 +1,6 @@
 function timer(){
     var Start = new Date().getTime();
-    AppDetailsBridge()
+    WebAPIJSI()
     var Elapsed = new Date().getTime() - Start;
     console.log(Elapsed);
 }
@@ -149,3 +149,29 @@ function NavigateToMoreJSIs(){
 // }logWebApiIOS
 
 // window?.webkit?.messageHandlers?.logWebApi?.postMessage?.("{\"uri\":\"https://mockable.tiket.com/rest\",\"query\":\"some_query=some_value\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
+function WebAPIJSI(){
+    var WebAPIJSITimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        WebAPIJSIresponse = event.detail;
+        var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSIFalseTimeStart;
+        console.log(WebAPIJSIFalseresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIFalseresponse,null,2);
+        document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"fetchApi","request":{"url":"https://http.dog/100.json","protocolConfig":{"config":"","method":"GET"},"data":null,"headers":null,"isCritical":true,"page":"Review","responseHandler":"review_main_call"}}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.generic?.callGenericNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+function NavigateToMoreJSIs(){
+    window.location.href="https://poc-web-common-actions.vercel.app"
+}
+
+window.generic.callGenericNativeJSI()
