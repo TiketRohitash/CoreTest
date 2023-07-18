@@ -1,6 +1,6 @@
 function timer(){
     var Start = new Date().getTime();
-    WebAPIJSI()
+    WebAPIJSIImageType()
     var Elapsed = new Date().getTime() - Start;
     console.log(Elapsed);
 }
@@ -173,10 +173,6 @@ function WebAPIJSIDog(){
 function NavigateToMoreJSIs(){
     window.location.href="https://poc-web-common-actions.vercel.app"
 }
-
-window.generic.callGenericNativeJSI()
-
-
 
 function WebAPIJSITiketHome(){
     var WebAPIJSITimeStart = new Date().getTime();
