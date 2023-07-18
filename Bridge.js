@@ -153,9 +153,9 @@ function WebAPIJSI(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
-        var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSIFalseTimeStart;
-        console.log(WebAPIJSIFalseresponse);
-        document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIFalseresponse,null,2);
+        var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSITimeStart;
+        console.log(WebAPIJSIresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIresponse,null,2);
         document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
     });
     try {
