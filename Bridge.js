@@ -258,3 +258,25 @@ function WebAPIJSIImageType(){
         console.log(e);
     }
 }
+
+
+function WebAPIJSIPaylater(){
+    var WebAPIJSITimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        WebAPIJSIresponse = event.detail;
+        var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSITimeStart;
+        console.log(WebAPIJSIresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIresponse,null,2);
+        document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"fetchApi","request":{"url":"https://m.tiket.com/promo/campaign/blibli-tiket-paylater?device_type=android&lang=en","protocolConfig":{"config":"","method":"GET"},"data":null,"headers":{"User-Agent":"tiketcom/android-version/en (twh:20296642) - v4.62.0-debug-NCT-3696-fetchApi-call-Mozilla/5.0 (Linux; Android 13; SM-E625F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/114.0.5735.226 Mobile Safari/537.36","Upgrade-Insecure-Requests":"1"},"isCritical":true,"page":"Review","responseHandler":"review_main_call"}}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.generic?.callGenericNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
