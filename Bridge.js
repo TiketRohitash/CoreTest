@@ -263,8 +263,9 @@ function WebAPIJSIImageType(){
 function WebAPIJSIPaylater(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
-        WebAPIJSIresponse = event.detail;
+        // WebAPIJSIresponse = event.detail;
         var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSITimeStart;
+        WebAPIJSIresponse = event.detail;
         console.log(WebAPIJSIresponse);
         document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIresponse,null,2);
         document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
