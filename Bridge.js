@@ -324,7 +324,7 @@ function FetchPOCPaymentAPI(){
                 "user-agent": "tiketcom/android-version/en (twh:20296642) - v4.62.0-debug-NCT-3696-fetchApi-call-Mozilla/5.0 (Linux; Android 13; SM-E625F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/114.0.5735.226 Mobile Safari/537.36",
                 "x-audience": "tiket.com",
                 "x-currency": "IDR",
-                "x-requested-with": "com.tiket.gits.debug"
+                "x-requested-with": "com.tiket.gits.debug",
             },
           }
         );
