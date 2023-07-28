@@ -304,8 +304,7 @@ function WebAPIJSIPaymentOrder(){
     }
 }
 
-function FetchPOCPaymentAPI(){
-    const callApiWithJSFetch = async () => {
+const callApiWithJSFetch = async () => {
         const startTime = new Date().getTime();
         const res = await fetch(
           "https://api.tiket.com/ms-gateway/tix-home/v2/home-pages?availablePlatforms=IOS&headerVariant=newhome&isNotificationActive=false&pageModuleCode=HOME_V2&platform=MOBILE&variant=HOME_V2&vertical=HOME&verticalIconVariant=control",
@@ -331,7 +330,6 @@ function FetchPOCPaymentAPI(){
         const resJson = await res.json();
         const endTime = new Date().getTime();
         const Final=endTime - startTime;
-        // document.getElementById("ttl").innerHTML = Final;
+        document.getElementById("ttl").innerHTML = Final;
         console.log("time duration for api", Final);
       };
-}
