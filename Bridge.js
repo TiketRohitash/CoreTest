@@ -281,3 +281,25 @@ function WebAPIJSIPaylater(){
         console.log(e);
     }
 }
+
+function WebAPIJSIPaymentOrder(){
+    var WebAPIJSITimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        WebAPIJSIresponse = event.detail;
+        var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSITimeStart;
+        // WebAPIJSIresponse = event.detail;
+        console.log(WebAPIJSIresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIresponse,null,2);
+        document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"fetchApi","request":{"url":"https://mpayment.tiket.com/ms-gateway/tix-my-order-core/payment/order?orderHash=49F0737B4057612C64C365DF&orderId=1240494971","protocolConfig":{"config":"","method":"GET"},"data":"","headers":{"authority":"mpayment.tiket.com","accept":"*/*","accept-language":"en,en-GB;q=0.9,en-US;q=0.8","accesstoken":"5f4991659010673c499c8740ea443b523a408e52","cookie":"userlang=en; _tix_logger_correlation_id=9e93f7cf-dbd3-477c-8f68-7bed8934d936; session_access_token=eyJraWQiOiJDalFpd2tlRjFLUHdhb3VNa0VWSWQ0QUMxX0ZueWVBSCJ9.eyJhdWQiOiJ0aWtldC5jb20iLCJzdWIiOiI2NGJmNjUyZGM1NmIyNzExNjAwZjg1ODgiLCJuYmYiOjE2OTAyNjQ4NzcsImlzcyI6Imh0dHBzOi8vd3d3LnRpa2V0LmNvbSIsImV4cCI6MTcwNjA0NDg3N30.z6ACKscv0EBsnD6n6n1Z5SVQJMVmlHlyqDJXxoRsvwb4AuGi0vhEgkjf1ZFssO1L; session_refresh_token=eyJraWQiOiJPazYtWnZNeUdNYTlWYmpDeEdXZkx5Ul96N09fWUY5ZyJ9.eyJhdWQiOiJ0aWtldC5jb20vcnQiLCJzdWIiOiI2NGJmNjUyZGM1NmIyNzExNjAwZjg1ODgiLCJuYmYiOjE2OTAyNjQ4NzcsImlzcyI6Imh0dHBzOi8vd3d3LnRpa2V0LmNvbSIsImV4cCI6MTcyMTgyNDg3N30.ykuUb1ErA7D65T_pw4hNPSrG_bfxLs5ohIxtCEi8dbZyIxop_kPfAcV7jSTOF4hu; tiket_currency=IDR; tiket-token-app=5f4991659010673c499c8740ea443b523a408e52; usercurrency=IDR; __cf_bm=lskrc6tt9hxCYnMK4_tPS4QHez7_yLuwpffEQAmqjwA-1690527200-0-AUikCmxH0STHjk1JtS7swwA7roUshKkKxe4DBcH8PcPJ6gnKTF5ZqphmnHda08PDJWn/g5t9PpumeGT55YtflJTIg5hWWtCRW/HiFDhkajFh; _cfuvid=bVs8zIZ5ZLaL0sqj_ClOF5.agXBRmNv70S1TG8k_bYM-1690527200790-0-604800000; 29=undefined; _ga=GA1.1.2067133095.1690527204; app_logger_correlation_id=c36689dc-b012-426d-ab98-29f241bcf32f; _ga_7H6ZDP2ZXG=GS1.1.1690527203.1.0.1690527229.34.0.0; amp_b34eb5=VzZosi9WV-PzEMUuH6gQAm...1h6dkbv2h.1h6dkcq20.2.5.7","lang":"en","referer":"https://mpayment.tiket.com/next/v4?order_id=1240494971&order_hash=49F0737B4057612C64C365DF&device_type=android&lang=en","sec-fetch-dest":"empty","sec-fetch-mode":"cors","sec-fetch-site":"same-origin","user-agent":"tiketcom/android-version/en (twh:20296642) - v4.62.0-debug-NCT-3696-fetchApi-call-Mozilla/5.0 (Linux; Android 13; SM-E625F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/114.0.5735.226 Mobile Safari/537.36","x-audience":"tiket.com","x-currency":"IDR","x-requested-with":"com.tiket.gits.debug"},"isCritical":true,"page":"Review","responseHandler":"review_main_call"}}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window?.generic?.callGenericNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
