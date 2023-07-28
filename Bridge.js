@@ -333,3 +333,43 @@ const callApiWithJSFetch = async () => {
         document.getElementById("ttl").innerHTML = Final;
         console.log("time duration for api", Final);
       };
+
+
+
+const callApiWithJSFetchCAT = async () => {
+    const startTime = new Date().getTime();
+    const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng",
+          {
+            headers: {
+                accept: "*/*",
+            },
+          }
+        );
+    const resJson = await res.json();
+    const endTime = new Date().getTime();
+    const Final=endTime - startTime;
+    document.getElementById("ttl").innerHTML = Final;
+    console.log("time duration for api", Final);
+    };
+
+function WebAPIJSICat(){
+        var WebAPIJSITimeStart = new Date().getTime();
+        window.addEventListener('nativeJSICallback', (event, data) => {
+            WebAPIJSIresponse = event.detail;
+            var WebAPIJSITimeElapsed = new Date().getTime() - WebAPIJSITimeStart;
+            console.log(WebAPIJSIresponse);
+            document.getElementById("output").innerHTML = JSON.stringify(WebAPIJSIresponse,null,2);
+            document.getElementById("ttl").innerHTML = WebAPIJSITimeElapsed;
+        });
+        try {
+            var ReqJSON = {"command":"fetchApi","request":{"url":"https://api.thecatapi.com/v1/images/search?breed_ids=beng","protocolConfig":{"config":"","method":"GET"},"data":null,"headers":{"accept":"*/*"},"isCritical":true,"page":"Review","responseHandler":"review_main_call"}}
+            if (window.webkit) {
+                window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            } else {
+                window?.generic?.callGenericNativeJSI(JSON.stringify(ReqJSON))
+            }
+        } catch(e) {
+            console.log(e);
+        }
+    }
+    
