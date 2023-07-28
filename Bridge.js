@@ -331,7 +331,7 @@ function FetchPOCPaymentAPI(){
         const resJson = await res.json();
         const endTime = new Date().getTime();
         const Final=endTime - startTime;
-        document.getElementById("ttl").innerHTML = Final;
+        // document.getElementById("ttl").innerHTML = Final;
         console.log("time duration for api", Final);
       };
 }
