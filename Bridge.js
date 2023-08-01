@@ -1,6 +1,6 @@
 function timer(){
     var Start = new Date().getTime();
-    WebAPIJSIImageType()
+    // WebAPIJSIImageType()
     var Elapsed = new Date().getTime() - Start;
     console.log(Elapsed);
 }
@@ -380,6 +380,7 @@ function WebAPIJSICat(){
               {
                 headers: {
                     accept: "*/*",
+                    "Access-Control-Allow-Origin": "*",
                 },
               }
             );
