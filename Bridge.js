@@ -73,6 +73,7 @@ function logWebApiIOSNew(){
 }
 
 function CallHandleActionSendContent(){
+    console.log("is it here?")
     var CallHandleActionSendContentTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallHandleActionSendContentresponse = event.detail;
