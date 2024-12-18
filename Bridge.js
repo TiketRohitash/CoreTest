@@ -96,7 +96,8 @@ function CallHandleActionSendContent(){
             window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
             console.log("generic")
-            window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
+            window?.native?.callNativeJSI(JSON.stringify(ReqJSON))
+            // window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
         }
     } catch(e) {
         console.log(e);
