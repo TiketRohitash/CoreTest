@@ -92,8 +92,10 @@ function CallHandleActionSendContent(){
             }
         }}
         if (window.webkit) {
+            console.log("webkit")
             window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
+            console.log("generic")
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
         }
     } catch(e) {
