@@ -88,17 +88,17 @@ function CallHandleActionSendContent(){
             var ReqJSON = {"command":"handleActionSendContent","request":{
                 "requestId": "abcdef123",
                 "mime-type": "application/pdf",
-                "data": {
+                "data": [
                   pdf1
-                }
+                ]
             }}
         }else if(filetype == "img"){
             var ReqJSON = {"command":"handleActionSendContent","request":{
                 "requestId": "abcdef123",
                 "mime-type": "image/*",
-                "data": {
+                "data": [
                   img1
-                }
+                ]
             }}
         }
 
