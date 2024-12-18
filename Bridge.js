@@ -83,34 +83,32 @@ function CallHandleActionSendContent(){
         document.getElementById("ttl").innerHTML = CallHandleActionSendContentTimeElapsed;
     });
     try {
-        // var ReqJSON = {"command":"handleActionSendContent","request":{
-        //     "requestId": "abcdef123",
-        //     "mime-type": "text/plain",
-        //     "text": "This is the message new",
-        //     "analytic": {
-        //       "key":"value"
-        //     }
-        // }}
-
-        var ReqJSON = {
-            "command": "handleActionSendContent",
-            "request": {
-                "requestId": "abcdef123",
-                "mime-type": "image/*",
-                "data": [ base64test
-                    
-                ]
+        var ReqJSON = {"command":"handleActionSendContent","request":{
+            "requestId": "abcdef123",
+            "mime-type": "text/plain",
+            "text": "This is the message new",
+            "analytic": {
+              "key":"value"
             }
-        }
+        }}
+
+        // var ReqJSON = {
+        //     "command": "handleActionSendContent",
+        //     "request": {
+        //         "requestId": "abcdef123",
+        //         "mime-type": "image/*",
+        //         "data": [ base64test
+                    
+        //         ]
+        //     }
+        // }
         if (window.webkit) {
             console.log("webkit")
             window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
             console.log("Before call "+ ReqJSON)
             console.log("Before call "+ JSON.stringify(ReqJSON))
-            window?.native?.callNativeJSI(JSON.stringify(ReqJSON))
-            console.log("After call "+ ReqJSON)
-            console.log("After call "+ JSON.stringify(ReqJSON))
+        
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
             console.log("After generic "+ ReqJSON)
             console.log("After generic "+ JSON.stringify(ReqJSON))
