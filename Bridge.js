@@ -72,6 +72,34 @@ function logWebApiIOSNew(){
     }
 }
 
+function CallHandleActionSendContent(){
+    var CallHandleActionSendContentTimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        CallHandleActionSendContentresponse = event.detail;
+        var CallHandleActionSendContentTimeElapsed = new Date().getTime() - CallHandleActionSendContentTimeStart;
+        console.log(CallHandleActionSendContentresponse);
+        document.getElementById("output").innerHTML = JSON.stringify(CallHandleActionSendContentresponse,null,2);
+        document.getElementById("ttl").innerHTML = CallHandleActionSendContentTimeElapsed;
+    });
+    try {
+        var ReqJSON = {"command":"handleActionSendContent","request":{
+            "requestId": "abcdef123",
+            "mime-type": "text/plain",
+            "text": "This is the message new",
+            "analytic": {
+              "key":"value"
+            }
+        }}
+        if (window.webkit) {
+            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+        } else {
+            window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 
 function CallNativeJSICamera(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
