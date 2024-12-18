@@ -95,8 +95,11 @@ function CallHandleActionSendContent(){
             console.log("webkit")
             window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
-            console.log("generic")
+            console.log("Before call "+ ReqJSON)
+            console.log("Before call "+ JSON.stringify(ReqJSON))
             window?.native?.callNativeJSI(JSON.stringify(ReqJSON))
+            console.log("After call "+ ReqJSON)
+            console.log("After call "+ JSON.stringify(ReqJSON))
             // window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
         }
     } catch(e) {
