@@ -145,7 +145,6 @@ export function CallHandleActionSendContent(){
                 url: "https://developer.mozilla.org",
                 files: tempData
               };
-              console.log("before ", shareData)
             navigator.share(shareData);
         } else {
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
@@ -199,6 +198,7 @@ export function CallHandleActionSendContentDifferentType(){
             }
             for(let i=0;i<pdfAmount;i++){
                 var mimeType = "application/pdf"
+                console.log(tempData[i])
                 tempData[i] = base64ToBlob(tempData[i].content, mimeType)
                 tempData[i] = new File([tempData[i]], "peedeeef.pdf", { type: mimeType });
             }
