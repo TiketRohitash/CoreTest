@@ -116,7 +116,13 @@ export function CallHandleActionSendContent(){
             }
         }
         if (window.webkit) {
-            window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            const shareData = {
+                title: "MDN",
+                text: "Learn web development on MDN!",
+                url: "https://developer.mozilla.org",
+              };
+            navigator.share(shareData);
         } else {
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
         }
