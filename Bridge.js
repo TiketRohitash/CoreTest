@@ -105,31 +105,34 @@ export function CallHandleActionSendContent(){
         document.getElementById("ttl").innerHTML = CallHandleActionSendContentTimeElapsed;
     });
     try {
-        var ReqJSON;
         if(filetype == "pdf"){
             var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(pdfArr[i])
-                ReqJSON = {"command":"handleActionSendContent","request":{
+                var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
                     "data": tempData
                 }}
+                if(text != null){
+                    ReqJSON["request"]["text"] = text
+                }
             }
         }else if(filetype == "img"){
             var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(imgArr[i])
-                ReqJSON = {"command":"handleActionSendContent","request":{
+                var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "image/*",
                     "data": tempData
                 }}
+                if(text != null){
+                    ReqJSON["request"]["text"] = text
+                }
             }
         }
-        if(text != null){
-            ReqJSON["request"]["text"] = text
-        }
+        
         if (window.webkit) {
             // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
             for(let i=0;i<amount;i++){
