@@ -93,7 +93,7 @@ export function CallHandleActionSendContent(){
     });
     try {
         if(filetype == "pdf"){
-            var tempData = new Array(amount);
+            var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(imgArr[i])
                 var ReqJSON = {"command":"handleActionSendContent","request":{
@@ -103,7 +103,7 @@ export function CallHandleActionSendContent(){
                 }}
             }
         }else if(filetype == "img"){
-            var tempData = new Array(amount);
+            var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(imgArr[i])
                 var ReqJSON = {"command":"handleActionSendContent","request":{
