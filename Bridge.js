@@ -199,8 +199,8 @@ export function CallHandleActionSendContentDifferentType(){
             for(let i=0;i<pdfAmount;i++){
                 var mimeType = "application/pdf"
                 console.log(tempData[i])
-                tempData[i] = base64ToBlob(tempData[i].content, mimeType)
-                tempData[i] = new File([tempData[i]], "peedeeef.pdf", { type: mimeType });
+                tempData[imgAmount] = base64ToBlob(tempData[imgAmount].content, mimeType)
+                tempData[imgAmount] = new File([tempData[imgAmount]], "peedeeef.pdf", { type: mimeType });
             }
             
             const shareData = {
