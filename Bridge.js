@@ -1,11 +1,12 @@
-import {img1, pdf1} from './Base64data.js'
+import {imgArr, pdfArr} from './Base64data.js'
 
 export function timer(){
     var Start = new Date().getTime();
     // WebAPIJSIImageType()
     var Elapsed = new Date().getTime() - Start;
     console.log(Elapsed);
-    console.log(img1.fileName)
+    console.log(imgArr)
+    console.log(pdfArr)
 }
 export function AppDetailsBridge(){
     var AppDetailBridgeTimeStart = new Date().getTime();
@@ -77,7 +78,11 @@ export function logWebApiIOSNew(){
 
 export function CallHandleActionSendContent(){
     const urlParams = new URLSearchParams(window.location.search);
-    const filetype = urlParams.get('filetype');
+    var filetype = urlParams.get('filetype');
+    var amount = 1;
+    if(amount != null){
+        amount = urlParams.get('amount');
+    }
     var CallHandleActionSendContentTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallHandleActionSendContentresponse = event.detail;
@@ -88,21 +93,25 @@ export function CallHandleActionSendContent(){
     });
     try {
         if(filetype == "pdf"){
-            var ReqJSON = {"command":"handleActionSendContent","request":{
-                "requestId": "abcdef123",
-                "mime-type": "application/pdf",
-                "data": [
-                  pdf1
-                ]
-            }}
+            for(i=0;i<amount;i++){
+                var ReqJSON = {"command":"handleActionSendContent","request":{
+                    "requestId": "abcdef123",
+                    "mime-type": "application/pdf",
+                    "data": [
+                      pdfArr[i]
+                    ]
+                }}
+            }
         }else if(filetype == "img"){
-            var ReqJSON = {"command":"handleActionSendContent","request":{
-                "requestId": "abcdef123",
-                "mime-type": "image/*",
-                "data": [
-                  img1
-                ]
-            }}
+            for(i=0;i<amount;i++){
+                var ReqJSON = {"command":"handleActionSendContent","request":{
+                    "requestId": "abcdef123",
+                    "mime-type": "image/*",
+                    "data": [
+                        imgArr[i]
+                    ]
+                }}
+            }
         }
 
         // var ReqJSON = {
