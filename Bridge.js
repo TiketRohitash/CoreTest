@@ -78,6 +78,16 @@ export function logWebApiIOSNew(){
     }
 }
 
+function base64ToBlob(base64, mimeType) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mimeType });
+}
+
 export function CallHandleActionSendContent(){
     const urlParams = new URLSearchParams(window.location.search);
     var filetype = urlParams.get('filetype');
@@ -117,10 +127,21 @@ export function CallHandleActionSendContent(){
         }
         if (window.webkit) {
             // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            for(let i=0;i<amount;i++){
+                const mimeType = ""
+                if(filetype == "pdf"){
+                    mimeType = "application/pdf"
+                }else{
+                    mimeType = "image/*"
+                }
+                tempData[i] = base64ToBlob(tempData[i].content, mimeType)
+            }
+            
             const shareData = {
                 title: "MDN",
                 text: "Learn web development on MDN!",
                 url: "https://developer.mozilla.org",
+                files: tempData
               };
             navigator.share(shareData);
         } else {
