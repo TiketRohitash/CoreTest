@@ -1,5 +1,7 @@
 import {imgArr, pdfArr} from './Base64data.js'
-
+window.onload = function(){
+    timer();
+}
 export function timer(){
     var Start = new Date().getTime();
     // WebAPIJSIImageType()
@@ -113,33 +115,15 @@ export function CallHandleActionSendContent(){
                 }}
             }
         }
-
-        // var ReqJSON = {
-        //     "command": "handleActionSendContent",
-        //     "request": {
-        //         "requestId": "abcdef123",
-        //         "mime-type": "image/*",
-        //         "data": [ base64test
-                    
-        //         ]
-        //     }
-        // }
         if (window.webkit) {
-            console.log("webkit")
-            window?.webkit?.messageHandlers?.callNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
         } else {
-            console.log("Before call "+ ReqJSON)
-            console.log("Before call "+ JSON.stringify(ReqJSON))
-        
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
-            console.log("After generic "+ ReqJSON)
-            console.log("After generic "+ JSON.stringify(ReqJSON))
         }
     } catch(e) {
         console.log(e);
     }
 }
-
 
 export function CallNativeJSICamera(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
@@ -184,6 +168,7 @@ export function CallNativeJSILocation(){
 }
 
 export function CallNativeJSILocationFalse(){
+    
     var CallNativeJSILocationFalseTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSILocationFalseresponse = event.detail;
