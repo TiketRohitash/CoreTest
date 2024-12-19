@@ -93,7 +93,7 @@ export function CallHandleActionSendContent(){
     });
     try {
         if(filetype == "pdf"){
-            for(i=0;i<amount;i++){
+            for(let i=0;i<amount;i++){
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
@@ -103,7 +103,7 @@ export function CallHandleActionSendContent(){
                 }}
             }
         }else if(filetype == "img"){
-            for(i=0;i<amount;i++){
+            for(let i=0;i<amount;i++){
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "image/*",
