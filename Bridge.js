@@ -95,7 +95,7 @@ export function CallHandleActionSendContent(){
         if(filetype == "pdf"){
             var tempData = new Array();
             for(let i=0;i<amount;i++){
-                tempData.push(imgArr[i])
+                tempData.push(pdfArr[i])
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
