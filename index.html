@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
-  <body onload="timer();">
+  <body onload="timer()">
     <div class="container">
       <h4>Available Bridges</h4>
         <a onclick="AppDetailsBridge()" class="btn btn-lg btn-primary text-light" id="AppDetails" role="button">AppDetails &raquo;</a>
@@ -44,7 +44,13 @@
     </div> 
 
     <!-- ================================================== -->
-    <script src="Bridge.js"></script>
+    <!-- <script src="Bridge.js"></script> -->
+    <script type="module">
+      import * as Bridge from "./Bridge.js";
+      Object.keys(Bridge).forEach(key => {
+      window[key] = Bridge[key];
+      });
+    </script>
   </body>
 </html>
 

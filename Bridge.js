@@ -1,10 +1,13 @@
-function timer(){
+import {img1, pdf1} from './Base64data.js'
+
+export function timer(){
     var Start = new Date().getTime();
     // WebAPIJSIImageType()
     var Elapsed = new Date().getTime() - Start;
     console.log(Elapsed);
+    console.log(img1.fileName)
 }
-function AppDetailsBridge(){
+export function AppDetailsBridge(){
     var AppDetailBridgeTimeStart = new Date().getTime();
     window.addEventListener('onAppDetailsReceived', (event, data) => {
         AppDetailresponse = event.detail;
@@ -24,7 +27,7 @@ function AppDetailsBridge(){
     }
 }
 
-function AuthenticationBridge(){
+export function AuthenticationBridge(){
     var AuthenticationBridgeTimeStart = new Date().getTime();
     window.addEventListener('onUserAuthenticationDetailsReceived', (event, data) => {
         Authresponse = event.detail;
@@ -44,13 +47,13 @@ function AuthenticationBridge(){
     }
 }
 
-function logWebApiIOS(){
+export function logWebApiIOS(){
     // alert("yellow!")
     var ResponseJSON = {"uri":"https://reqres.in/api/users","query":"","method":"GET","reqPayloadSize":23,"respPayloadSize":2223,"respCode":200,"respTime":54,"exception":"-","businessCode":"SUCCESS","businessMsg":"SUCCESS"}
     window?.webkit?.messageHandlers?.logWebApi?.postMessage?.(JSON.stringify(ResponseJSON))
 }
 
-function logWebApiIOSNew(){
+export function logWebApiIOSNew(){
     var logWebTimeStart = new Date().getTime();
     window.addEventListener('onUserAuthenticationDetailsReceived', (event, data) => {
         Authresponse = event.detail;
@@ -72,7 +75,7 @@ function logWebApiIOSNew(){
     }
 }
 
-function CallHandleActionSendContent(){
+export function CallHandleActionSendContent(){
     const urlParams = new URLSearchParams(window.location.search);
     const filetype = urlParams.get('filetype');
     var CallHandleActionSendContentTimeStart = new Date().getTime();
@@ -129,7 +132,7 @@ function CallHandleActionSendContent(){
 }
 
 
-function CallNativeJSICamera(){
+export function CallNativeJSICamera(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSIBridgeresponse = event.detail;
@@ -150,7 +153,7 @@ function CallNativeJSICamera(){
     }
 }
 
-function CallNativeJSILocation(){
+export function CallNativeJSILocation(){
     var CallNativeJSILocationTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSILocationresponse = event.detail;
@@ -171,7 +174,7 @@ function CallNativeJSILocation(){
     }
 }
 
-function CallNativeJSILocationFalse(){
+export function CallNativeJSILocationFalse(){
     var CallNativeJSILocationFalseTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         CallNativeJSILocationFalseresponse = event.detail;
@@ -192,7 +195,7 @@ function CallNativeJSILocationFalse(){
     }
 }
 
-function NavigateToMoreJSIs(){
+export function NavigateToMoreJSIs(){
     window.location.href="https://poc-web-common-actions.vercel.app"
 }
 
@@ -200,12 +203,12 @@ function NavigateToMoreJSIs(){
 // https://poc-web-common-actions.vercel.app/
 
 // window.native.callNativeJSI("{\"command\":\"requestCamera\"}")
-// function AppDetailsBridge(){
+// export function AppDetailsBridge(){
 //     alert("yellow!")
 // }logWebApiIOS
 
 // window?.webkit?.messageHandlers?.logWebApi?.postMessage?.("{\"uri\":\"https://mockable.tiket.com/rest\",\"query\":\"some_query=some_value\",\"method\":\"GET\",\"reqPayloadSize\":23,\"respPayloadSize\":2223,\"respCode\":200,\"respTime\":54,\"exception\":\"-\",\"businessCode\":\"SUCCESS\",\"businessMsg\":\"SUCCESS\"}")
-function WebAPIJSIDog(){
+export function WebAPIJSIDog(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -226,11 +229,7 @@ function WebAPIJSIDog(){
     }
 }
 
-function NavigateToMoreJSIs(){
-    window.location.href="https://poc-web-common-actions.vercel.app"
-}
-
-function WebAPIJSITiketHomeiOS(){
+export function WebAPIJSITiketHomeiOS(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -251,7 +250,7 @@ function WebAPIJSITiketHomeiOS(){
     }
 }
 
-function WebAPIJSITiketHomeAndroid(){
+export function WebAPIJSITiketHomeAndroid(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -273,7 +272,7 @@ function WebAPIJSITiketHomeAndroid(){
 }
 
 
-function WebAPIJSIAmplitude(){
+export function WebAPIJSIAmplitude(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -294,7 +293,7 @@ function WebAPIJSIAmplitude(){
     }
 }
 
-function WebAPIJSIImageType(){
+export function WebAPIJSIImageType(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -316,7 +315,7 @@ function WebAPIJSIImageType(){
 }
 
 
-function WebAPIJSIPaylater(){
+export function WebAPIJSIPaylater(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         // WebAPIJSIresponse = event.detail;
@@ -338,7 +337,7 @@ function WebAPIJSIPaylater(){
     }
 }
 
-function WebAPIJSIPaymentOrder(){
+export function WebAPIJSIPaymentOrder(){
     var WebAPIJSITimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
         WebAPIJSIresponse = event.detail;
@@ -360,7 +359,7 @@ function WebAPIJSIPaymentOrder(){
     }
 }
 
-const callApiWithJSFetch = async () => {
+export const callApiWithJSFetch = async () => {
         const startTime = new Date().getTime();
         const res = await fetch(
           "https://api.tiket.com/ms-gateway/tix-home/v2/home-pages?availablePlatforms=IOS&headerVariant=newhome&isNotificationActive=false&pageModuleCode=HOME_V2&platform=MOBILE&variant=HOME_V2&vertical=HOME&verticalIconVariant=control",
@@ -392,7 +391,7 @@ const callApiWithJSFetch = async () => {
 
 
 
-const callApiWithJSFetchCAT = async () => {
+    export const callApiWithJSFetchCAT = async () => {
     const startTime = new Date().getTime();
     const res = await fetch("https://api.thecatapi.com/v1/images/search?breed_ids=beng",
           {
@@ -408,7 +407,7 @@ const callApiWithJSFetchCAT = async () => {
     console.log("time duration for api", Final);
     };
 
-function WebAPIJSICat(){
+export function WebAPIJSICat(){
         var WebAPIJSITimeStart = new Date().getTime();
         window.addEventListener('nativeJSICallback', (event, data) => {
             WebAPIJSIresponse = event.detail;
@@ -430,7 +429,7 @@ function WebAPIJSICat(){
     }
     
 
-    const SupportFlaskAPIFetch = async () => {
+    export const SupportFlaskAPIFetch = async () => {
         const startTime = new Date().getTime();
         const res = await fetch("http://172.20.10.2:8001/support",
               {
@@ -447,7 +446,7 @@ function WebAPIJSICat(){
         console.log("time duration for api", Final);
         };
     
-    function SupportFlaskAPIJSI(){
+    export function SupportFlaskAPIJSI(){
             var WebAPIJSITimeStart = new Date().getTime();
             window.addEventListener('nativeJSICallback', (event, data) => {
                 WebAPIJSIresponse = event.detail;
