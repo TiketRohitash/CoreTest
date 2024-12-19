@@ -93,23 +93,23 @@ export function CallHandleActionSendContent(){
     });
     try {
         if(filetype == "pdf"){
+            var tempData = new Array(amount);
             for(let i=0;i<amount;i++){
+                tempData.push(imgArr[i])
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
-                    "data": [
-                      pdfArr[i]
-                    ]
+                    "data": tempData
                 }}
             }
         }else if(filetype == "img"){
+            var tempData = new Array(amount);
             for(let i=0;i<amount;i++){
+                tempData.push(imgArr[i])
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "image/*",
-                    "data": [
-                        imgArr[i]
-                    ]
+                    "data": tempData
                 }}
             }
         }
