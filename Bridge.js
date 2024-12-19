@@ -92,6 +92,7 @@ export function CallHandleActionSendContent(){
     const urlParams = new URLSearchParams(window.location.search);
     var filetype = urlParams.get('filetype');
     var amount = 1;
+    var text = urlParams.get('text')
     if(amount != null){
         amount = urlParams.get('amount');
     }
@@ -124,6 +125,9 @@ export function CallHandleActionSendContent(){
                     "data": tempData
                 }}
             }
+        }
+        if(text != null){
+            ReqJSON["request"]["text"] = text
         }
         if (window.webkit) {
             // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
@@ -198,7 +202,7 @@ export function CallHandleActionSendContentDifferentType(){
             }
             for(let i=0;i<pdfAmount;i++){
                 var mimeType = "application/pdf"
-                console.log(tempData[i])
+                console.log(tempData[imgAmount])
                 tempData[imgAmount] = base64ToBlob(tempData[imgAmount].content, mimeType)
                 tempData[imgAmount] = new File([tempData[imgAmount]], "peedeeef.pdf", { type: mimeType });
             }
