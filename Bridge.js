@@ -155,6 +155,69 @@ export function CallHandleActionSendContent(){
     }
 }
 
+export function CallHandleActionSendContentDifferentType(){
+    const urlParams = new URLSearchParams(window.location.search);
+    var imgAmount, pdfAmount = 0
+    imgParams = urlParams.get('imga')
+    pdfParams = urlParams.get('pdfa')
+    if(imgParams != null){
+        imgAmount = imgParams
+    }
+    if(pdfParams != null){
+        pdfAmount = pdfParams
+    }
+    var CallHandleActionSendContentDifferentTypeTimeStart = new Date().getTime();
+    window.addEventListener('nativeJSICallback', (event, data) => {
+        CallHandleActionSendContentDifferentTyperesponse = event.detail;
+        var CallHandleActionSendContentDifferentTypeTimeElapsed = new Date().getTime() - CallHandleActionSendContentDifferentTypeTimeStart;
+        console.log(CallHandleActionSendContentDifferentTyperesponse);
+        document.getElementById("output").innerHTML = JSON.stringify(CallHandleActionSendContentDifferentTyperesponse,null,2);
+        document.getElementById("ttl").innerHTML = CallHandleActionSendContentDifferentTypeTimeElapsed;
+    });
+    try {
+        var tempData = new Array();
+            for(let i=0;i<imgAmount;i++){
+                tempData.push(imgArr[i])
+                
+            }
+            for(let i=0;i<pdfAmount;i++){
+                tempData.push(pdfArr[i])
+                
+            }
+            var ReqJSON = {"command":"handleActionSendContent","request":{
+                "requestId": "abcdef123",
+                "mime-type": "image/*",
+                "data": tempData
+            }}
+        
+        if (window.webkit) {
+            // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
+            for(let i=0;i<imgAmount;i++){
+                var mimeType = "image/png"
+                tempData[i] = base64ToBlob(tempData[i].content, mimeType)
+                tempData[i] = new File([tempData[i]], "imej.png", { type: mimeType });
+            }
+            for(let i=0;i<pdfAmount;i++){
+                var mimeType = "application/pdf"
+                tempData[i] = base64ToBlob(tempData[i].content, mimeType)
+                tempData[i] = new File([tempData[i]], "peedeeef.pdf", { type: mimeType });
+            }
+            
+            const shareData = {
+                title: "MDN",
+                text: "Learn web development on MDN!",
+                url: "https://developer.mozilla.org",
+                files: tempData
+              };
+            navigator.share(shareData);
+        } else {
+            window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
+        }
+    } catch(e) {
+        console.log(e);
+    }
+}
+
 export function CallNativeJSICamera(){
     var CallNativeJSIBridgeTimeStart = new Date().getTime();
     window.addEventListener('nativeJSICallback', (event, data) => {
