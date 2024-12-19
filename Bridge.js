@@ -132,7 +132,7 @@ export function CallHandleActionSendContent(){
                 if(filetype == "pdf"){
                     mimeType = "application/pdf"
                 }else{
-                    mimeType = "image/*"
+                    mimeType = "image/png"
                 }
                 tempData[i] = base64ToBlob(tempData[i].content, mimeType)
             }
