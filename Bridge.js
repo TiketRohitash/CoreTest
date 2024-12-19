@@ -132,6 +132,7 @@ export function CallHandleActionSendContent(){
                 }
             }
         }
+        console.log(ReqJSON)
         
         if (window.webkit) {
             // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
