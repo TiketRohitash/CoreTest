@@ -128,7 +128,7 @@ export function CallHandleActionSendContent(){
         if (window.webkit) {
             // window?.webkit?.messageHandlers?.callGenericNativeJSI?.postMessage?.(JSON.stringify(ReqJSON))
             for(let i=0;i<amount;i++){
-                const mimeType = ""
+                var mimeType = ""
                 if(filetype == "pdf"){
                     mimeType = "application/pdf"
                 }else{
