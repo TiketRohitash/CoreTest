@@ -135,6 +135,7 @@ export function CallHandleActionSendContent(){
                     mimeType = "image/png"
                 }
                 tempData[i] = base64ToBlob(tempData[i].content, mimeType)
+                tempData[i] = new File([tempData[i]], "image.png", { type: mimeType });
             }
             console.log("tempData ", tempData)
             
