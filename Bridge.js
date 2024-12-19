@@ -140,7 +140,7 @@ export function CallHandleActionSendContent(){
             console.log("tempData ", tempData)
             
             const shareData = {
-                title: "MDN",
+                // title: "MDN",
                 text: "Learn web development on MDN!",
                 // url: "https://developer.mozilla.org",
                 files: tempData
