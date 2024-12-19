@@ -136,6 +136,7 @@ export function CallHandleActionSendContent(){
                 }
                 tempData[i] = base64ToBlob(tempData[i].content, mimeType)
             }
+            console.log("tempData ", tempData)
             
             const shareData = {
                 title: "MDN",
@@ -143,6 +144,7 @@ export function CallHandleActionSendContent(){
                 url: "https://developer.mozilla.org",
                 files: tempData
               };
+              console.log("before ", shareData)
             navigator.share(shareData);
         } else {
             window.generic.callGenericNativeJSI(JSON.stringify(ReqJSON))
