@@ -105,11 +105,12 @@ export function CallHandleActionSendContent(){
         document.getElementById("ttl").innerHTML = CallHandleActionSendContentTimeElapsed;
     });
     try {
+        var ReqJSON;
         if(filetype == "pdf"){
             var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(pdfArr[i])
-                var ReqJSON = {"command":"handleActionSendContent","request":{
+                ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
                     "data": tempData
@@ -119,7 +120,7 @@ export function CallHandleActionSendContent(){
             var tempData = new Array();
             for(let i=0;i<amount;i++){
                 tempData.push(imgArr[i])
-                var ReqJSON = {"command":"handleActionSendContent","request":{
+                ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "image/*",
                     "data": tempData
