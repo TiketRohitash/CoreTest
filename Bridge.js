@@ -158,8 +158,8 @@ export function CallHandleActionSendContent(){
 export function CallHandleActionSendContentDifferentType(){
     const urlParams = new URLSearchParams(window.location.search);
     var imgAmount, pdfAmount = 0
-    imgParams = urlParams.get('imga')
-    pdfParams = urlParams.get('pdfa')
+    var imgParams = urlParams.get('imga')
+    var pdfParams = urlParams.get('pdfa')
     if(imgParams != null){
         imgAmount = imgParams
     }
