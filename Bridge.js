@@ -1,4 +1,4 @@
-import {imgArr, pdfArr} from './Base64data.js'
+import {imgArr, pdfArr, emptyPDFBase64,emptyIMGBase64, emptyPDFName, emptyImgName, nullPDFName, nullImgName} from './Base64data.js'
 window.onload = function(){
     timer();
 }
@@ -112,7 +112,19 @@ export function CallHandleActionSendContent(){
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "application/pdf",
-                    "data": tempData
+                    "data": tempData,
+                    "analytic": {
+                        "event": "click",
+                        "eventCategory": "shareWin",
+                        "eventLabel": "shareButtonChooseApp",
+                        "campaignName": "WinterPromo2024",
+                        "url": "onelink.tiket.com/shareoct",
+                        "campaignStatus": "Active",
+                        "eventAction": "clickBack",
+                        "screenName": "shareWin",
+                        "screenOwner": "memeber",
+                        "vertical": "memeber",
+                      },
                 }}
                 if(text != null){
                     ReqJSON["request"]["text"] = text
@@ -125,7 +137,19 @@ export function CallHandleActionSendContent(){
                 var ReqJSON = {"command":"handleActionSendContent","request":{
                     "requestId": "abcdef123",
                     "mime-type": "image/*",
-                    "data": tempData
+                    "data": tempData,
+                    "analytic": {
+                        "event": "click",
+                        "eventCategory": "shareWin",
+                        "eventLabel": "shareButtonChooseApp",
+                        "campaignName": "WinterPromo2024",
+                        "url": "onelink.tiket.com/shareoct",
+                        "campaignStatus": "Active",
+                        "eventAction": "clickBack",
+                        "screenName": "shareWin",
+                        "screenOwner": "memeber",
+                        "vertical": "memeber",
+                      },
                 }}
                 if(text != null){
                     ReqJSON["request"]["text"] = text
